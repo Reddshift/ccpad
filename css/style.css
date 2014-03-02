@@ -1,0 +1,421 @@
+/*	default
+---------------------------------------------*/
+body {
+	background: #ffffff;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #333333;
+}
+.text {
+	display: none;
+}
+img {
+	border: 0;
+}
+a {
+	text-decoration: none;
+	color: #003399;
+}
+a:hover {
+	text-decoration: underline;
+	color: #000000;
+}
+a:visited {
+	text-decoration: none;
+	color: #003399;
+}
+
+/*	content
+---------------------------------------------*/
+.basic_container {
+	width: 100%;
+}
+
+.basic_shadow {
+	margin: 0 auto;
+	width: 820px;
+	background: url(../images/painter-shadow-grad.jpg) repeat-y;
+}
+
+.page_content {
+	width: 790px;
+	padding: 10px 20px 10px 20px;
+	align: center;
+}
+
+#content {
+	margin: 0 auto;
+	width: 738px;
+	position: relative;
+	padding: 30px;
+}
+
+.page_title {
+	font-size: 18px;
+	font-weight: bold;
+	color: #003399;
+}
+
+/*	header
+---------------------------------------------*/
+#header {
+	margin: 0 auto;
+	width: 800px;
+	height: 150px;
+	position: relative;
+}
+#logo_top {
+	position: absolute;
+	left: 20px;
+	top: 21px;
+	height: 56px;
+	width: 232px;
+}
+#tagline {
+	position: absolute;
+	left: 270px;
+	top: 43px;
+	width: 320px;
+}
+#tagline h1{
+	font-size: 14px;
+	font-weight: bold;
+	color: #333333;
+}
+#phone_spot {
+	right: 10px;
+	top: 32px;
+	position: absolute;
+	width: 180px;
+	color: #999999;
+	text-align: center;
+	font-size: 16px;
+	letter-spacing: 1px;
+	font-weight: bold;
+	line-height: 18px;
+}
+#phone_spot_phone {
+	color: #000000;
+	font-size: 18px;
+	line-height: 22px;
+}
+
+/*	nav
+---------------------------------------------*/
+#mainmenu
+{
+	margin: 0 auto;
+	width: 800px;
+	height: 30px;
+	background: url(../images/painter-nav-grad.jpg) repeat-x;
+}
+
+/*	home image
+---------------------------------------------*/
+#imagehome {
+	margin: 0px auto;
+	width: 800px;
+	height: 300px;
+	position: relative;
+}
+#image-residential-home {
+	width: 400px;
+	height: 300px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+#image-commercial-home {
+	width: 400px;
+	height: 300px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+/*	home sec1
+---------------------------------------------*/
+#hm_sec1_content {
+	margin: 0 auto;
+	width: 798px;
+	background: #e0edf3 url(../images/hm_sec1_grad.jpg) repeat-x;
+	position: relative;
+	height: 130px;
+}
+.sec1_title {
+	font-size: 16px;
+	color: #cc3300;
+	line-height: 32px;
+	font-weight: bold;
+}
+.sec1_box_left {
+	position: absolute;
+	height: 130px;
+	background-image: url(../images/hm_sec1_grad.jpg);
+	background-repeat: repeat-x;
+	width: 397px;
+	left: 0px;
+	top: 0px;
+	border-right: 2px solid #e0e6e9;
+}
+.sec1_box_right {
+	position: absolute;
+	height: 130px;
+	background-image: url(../images/hm_sec1_grad.jpg);
+	background-repeat: repeat-x;
+	width: 397px;
+	right: 0px;
+	top: 0px;
+	border-left: 2px solid #FFFFFF;
+}
+.text_left {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 210px;
+	padding-top: 8px;
+	padding-left: 20px;
+}
+.image_right {
+	position: absolute;
+	top: 12px;
+	right: 20px;
+	height: 98px;
+	width: 131px;
+	background-image: url(../images/painting-gallery-bkg.jpg);
+	background-repeat: no-repeat;
+}
+.image_holder {
+	position: absolute;
+	top: 7px;
+	height: 80px;
+	width: 115px;
+	left: 8px;
+}
+
+/*	home sec2
+---------------------------------------------*/
+.hm_shadow {
+	margin: 0 auto;
+	width: 820px;
+	background: url(../images/hm-shadow-grad.jpg) repeat-y;
+}
+#hm_sec2_content {
+	margin: 0 auto;
+	width: 798px;
+	position: relative;
+	height: 195px;
+	background-image: url(../images/hm-shadow-top.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+.projects {
+	padding-left: 20px;
+}
+.sec2_title {
+	font-size: 14px;
+	color: #003399;
+	line-height: 32px;
+}
+#sec2_1 {
+	width: 148px;
+	padding: 8px 20px 0px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+#sec2_2 {
+	width: 188px;
+	padding: 8px 10px 0px 0px;
+	position: absolute;
+	left: 189px;
+	top: 0px;
+	height: 180px;
+}
+#sec2_3 {
+	width: 188px;
+	padding: 8px 20px 0px 0px;
+	position: absolute;
+	right: 189px;
+	top: 0px;
+	height: 180px;
+}
+#sec2_4 {
+	width: 148px;
+	padding: 8px 20px 10px;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+/*	home buttons
+---------------------------------------------*/
+#hm_button_content {
+	margin: 0 auto;
+	width: 798px;
+	height: 40px;
+	position: relative;
+}
+#but1 {
+	width: 169px;
+	padding-bottom: 8px;
+	padding-right: 20px;
+	padding-top: 8px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+#but2 {
+	width: 188px;
+	padding-bottom: 8px;
+	padding-right: 20px;
+	padding-top: 8px;
+	position: absolute;
+	left: 189px;
+	top: 0px;
+}
+#but3 {
+	width: 178px;
+	padding-bottom: 8px;
+	padding-right: 20px;
+	padding-top: 8px;
+	position: absolute;
+	top: 0px;
+	right: 189px;
+}
+#but4 {
+	width: 169px;
+	padding-bottom: 8px;
+	padding-right: 20px;
+	padding-top: 8px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+.hm_link {
+}
+.hm_link a {
+	color: #333333;
+	text-decoration: none;
+}
+.hm_link a:hover {
+	color: #003399;
+	text-decoration: underline;
+}
+.hm_link a:visited {
+	color: #003399;
+	text-decoration: none;
+}
+
+/*	footer
+---------------------------------------------*/
+#footer {
+	margin: 0 auto;
+	width: 820px;
+	height: 160px;
+	background: url(../images/painter-footer-bkg.jpg) no-repeat;
+	position: relative;
+	font-size: 11px;
+}
+#copyright {
+	position: absolute;
+	left: 33px;
+	color: #333333;
+	top: 16px;
+	line-height: 16px;
+	font-size: 10px;
+}
+#footer_links {
+	position: absolute;
+	right: 33px;
+	color: #333333;
+	top: 16px;
+	line-height: 16px;
+	font-size: 10px;
+	text-align: right;
+}
+#footer a:link {
+	text-decoration: underline;
+	color: #003399;
+}
+#footer a:hover {
+	color: #000000;
+	text-decoration: underline;
+}
+
+
+
+
+#left_content {
+}
+#right_content {
+	width: 25%;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #CCCCCC;
+	padding: 8px 20px 20px 0px;
+	background-color: #eeeeee;
+}
+
+.sub_right_title {
+	font-size: 14px;
+	color: #003399;
+	line-height: 32px;
+	font-weight: bold;
+}
+.sub_title {
+	font-size: 14px;
+	color: #003399;
+}
+#sub_title_box {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #CCCCCC;
+	padding: 8px 20px;
+	background-color: #eeeeee;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #FFFFFF;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #999999;
+}
+#sub_content_box {
+	padding: 0px;
+}
+.gallery {
+	padding-top: 8px;
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.gallery_images {
+	padding: 4px 20px;
+}
+.gallery_options {
+	padding-right: 20px;
+	padding-left: 20px;
+	padding-top: 8px;
+	padding-bottom: 0px;
+}
+.option_title {
+	font-size: 12px;
+	color: #003399;
+	text-align: center;
+}
+.gallery_boxes {
+	text-align: center;
+	padding: 5px;
+}
+
+/*--Added classes--*/
+legend {
+border: solid 1px;
+border-color:#0030A5;
+font-weight: bold;
+padding: 3px;
+font-size: 14px;
+background-color: #EFEFEF;
+color: #0030A5;
+}

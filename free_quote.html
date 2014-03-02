@@ -1,0 +1,148 @@
+<?
+include "includes/config.inc.php";
+print_header($title="Home")
+?>
+
+<!--begin contact page content //-->
+<style type="text/css">
+<!--
+.style1 {color: #FF0000}
+.style2 {font-weight: bold}
+-->
+</style>
+
+<div id="basic_container">	
+	<div class="basic_shadow">		
+		<div class="page_content"><img src="images/free_quote.jpg" width="200" height="53" />
+		  </p>
+	      <p>To receive a free quote, please fill out the form below. 
+	      <form name="request" enctype="multipart/form-data" method="post" action="php/mail.php">
+                                            <fieldset class="style2" style="border: solid 1px; padding: 10px;">
+                                              <legend style="border: solid 1px; padding: 3px; text-transform: uppercase;">Enter your information in the form below</legend>
+                                              <table width="95%" border="0" cellpadding="3">
+                                                <tr>
+                                                  <td width="32%"><span class="style4 style1">*</span>Name </td>
+                                                <td width="68%"><input type="text" name="name_from" />                                            </td>
+                                              </tr>
+                                                <tr>
+                                                  <td>Phone</td>
+                                                <td><input type="text" name="phone" /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td><span class="style4 style1">*</span>Email</td>
+                                                <td><input type="text" name="email_from" /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td colspan="2"><hr /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td colspan="2"><div align="center"><strong>Address</strong><hr width="80%"/></div></td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Street</td>
+                                                <td><input type="text" name="street" /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td>City</td>
+                                                <td><input type="text" name="city" /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td>State</td>
+                                                <td><select name="state" size="1">
+                                                  <option value="AK">AK</option>
+                                                  <option value="AL">AL</option>
+                                                  <option value="AR">AR</option>
+                                                  <option value="AZ">AZ</option>
+                                                  <option value="CA">CA</option>
+                                                  <option value="CO">CO</option>
+                                                  <option value="CT">CT</option>
+                                                  <option value="DC">DC</option>
+                                                  <option value="DE">DE</option>
+                                                  <option value="FL">FL</option>
+                                                  <option value="GA">GA</option>
+                                                  <option value="HI">HI</option>
+                                                  <option value="IA">IA</option>
+                                                  <option value="ID">ID</option>
+                                                  <option value="IL">IL</option>
+                                                  <option value="IN">IN</option>
+                                                  <option value="KS">KS</option>
+                                                  <option value="KY">KY</option>
+                                                  <option value="LA">LA</option>
+                                                  <option value="MA">MA</option>
+                                                  <option value="MD">MD</option>
+                                                  <option value="ME">ME</option>
+                                                  <option value="MI">MI</option>
+                                                  <option value="MN">MN</option>
+                                                  <option value="MO">MO</option>
+                                                  <option value="MS">MS</option>
+                                                  <option value="MT">MT</option>
+                                                  <option value="NC">NC</option>
+                                                  <option value="ND">ND</option>
+                                                  <option value="NE">NE</option>
+                                                  <option value="NH">NH</option>
+                                                  <option value="NJ">NJ</option>
+                                                  <option value="NM">NM</option>
+                                                  <option value="NV">NV</option>
+                                                  <option value="NY">NY</option>
+                                                  <option value="OH">OH</option>
+                                                  <option value="OK">OK</option>
+                                                  <option value="OR">OR</option>
+                                                  <option value="PA">PA</option>
+                                                  <option value="RI">RI</option>
+                                                  <option value="SC">SC</option>
+                                                  <option value="SD">SD</option>
+                                                  <option value="TN">TN</option>
+                                                  <option value="TX">TX</option>
+                                                  <option value="UT" selected="selected">UT</option>
+                                                  <option value="VA">VA</option>
+                                                  <option value="VT">VT</option>
+                                                  <option value="WA">WA</option>
+                                                  <option value="WI">WI</option>
+                                                  <option value="WV">WV</option>
+                                                  <option value="WY">WY</option>
+                                                  </select></td>
+                                              </tr>
+                                                <tr>
+                                                  <td>Zip</td>
+                                                <td><input type="text" name="zip" /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td colspan="2"><hr /></td>
+                                              </tr>
+                                                <tr>
+                                                  <td>Location type: </td>
+                                                  <td><input name="location" type="radio" value="residential"/>
+                                                    Residential
+												      <input name="location" type="radio" value="commercial" />
+												      Commerical</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>Painting type: </td>
+                                                  <td><input name="painting" type="radio" value="interior"/>
+                                                  Interior
+                                                    <input name="painting" type="radio" value="exterior"/>
+                                                    Exterior</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>What are you looking for? </td>
+                                                  <td><textarea name="what_are_you_looking_for"></textarea></td>
+                                              </tr>
+                                            </table>
+                                            </fieldset>
+                                            <p align="center">
+                                              <input type="submit" name="submit" value="     Send Form     " />
+                                            </p>
+                                            <p align="center" class="style3 style1">Required fields are marked with a *</p>
+          </form>
+	      </p>
+      </div>  
+	</div>
+</div>
+<!--end contact page content //-->
+
+
+<!--end home page //-->
+
+  <? 
+print_footer()
+?>
