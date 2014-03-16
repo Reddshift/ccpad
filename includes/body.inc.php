@@ -13,22 +13,14 @@ function print_header($title) {
 
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/top_nav.css" rel="stylesheet" type="text/css" />
-  <link href="testing/css/touchtouch.css" rel="stylesheet" type="text/css" />
+  <link href="css/touchtouch.css" rel="stylesheet" type="text/css" />
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>
   <script type="text/javascript" src="js/touchTouch.jquery.js" ></script>
-
-  <script type="text/javascript">
-    $(function() {
-      $('table.touchtouch tr td a').touchtouch();
-
-    });
-  </script>
+  <script type="text/javascript" src="js/photoTools.js" ></script>
 
 
 </head>
-
-<body onload="MM_preloadImages('images/header-over.jpg','images/pavers_logo_top-over.jpg')">
 
 <!--begin header //-->
 
