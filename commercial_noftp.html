@@ -13,7 +13,8 @@
   <link href="css/touchtouch.css" rel="stylesheet" type="text/css" />
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>
-  <script type="text/javascript" src="js/touchtouch.js" ></script>
+  <script type="text/javascript" src="js/touchTouch.jquery.js" ></script>
+  <script type="text/javascript" src="js/photoTools.js" ></script>
 
 
 </head>
@@ -86,33 +87,57 @@
 
 
       <script type="text/javascript">
+        $(function() {
+          //photoTools.flickr.loadSet("72157641723925504", "commercial_gallery");
+          var commercial = new Gallery("72157641723925504", "commercial_gallery");
+          commercial.load_set()
+        });
+
+/*
+        photoTools = new Object();
+
         $.getJSON("http://api.flickr.com/services/rest/?",
           {method: "flickr.photosets.getPhotos", api_key: "e9c269dab327f845d9ab34045f9db905", photoset_id: "72157641723925504", format: "json", nojsoncallback : "1" },
           function(set_container) {
+            photoTools.setLength = set_container.photoset.photo.length;
             $.each(set_container.photoset.photo, function(i,photo){
+              alert("hey: " + i);
+              photoTools.setPosition = i
               $.getJSON("http://api.flickr.com/services/rest/?",
                 {method: "flickr.photos.getSizes", api_key: "e9c269dab327f845d9ab34045f9db905", photo_id: photo.id, format: "json", nojsoncallback : "1"  },
-                function(sizeobject) { $("<img/>").attr({src : findMedium(sizeobject.sizes.size)}).appendTo("#commercial_gallery"); }
+                function(sizeobject) { 
+                  sizeHash = getSizeHash(sizeobject.sizes.size);
+                  link = $("<a/>").attr({href : sizeHash.Original});
+                  thumb = $("<img/>").attr({src : sizeHash.Thumbnail}).appendTo("#commercial_gallery");
+                  link.appendTo("#commercial_gallery");
+                  thumb.appendTo(link);
+
+                  //don't know if we should do this each time...might ensure that under a slow connection images are still viewable, but also might be slow...
+                  if ((photoTools.setLength -1) == photoTools.setPosition) {
+                  alert(photoTools.setLength + " --- " + photoTools.setPosition);
+                    $('#commercial_gallery a').touchTouch();
+                  }
+                }
               );
             });
           }
         );
-        $(function() {
-          $('div#commercial_gallery').touchTouch();
-        });
+        //$(function() {
+         // $('#commercial_gallery a').touchTouch();
+        //});
 
-        function findMedium(available) {
-          source = '';
+        function getSizeHash(available) {
+          sizes = new Object();
           $.each(available, function(i, size) {
-            if( size.label == "Medium") {
-              source = size.source;
-            }
+            sizes[size.label] = size.source;
           });
-          return source
+          return sizes;
         }
+*/
 
       </script>
       <div id="commercial_gallery"></div>
+      <a onclick="$('#commercial_gallery a').touchTouch();">TEST</a>
 
 	  </div>  
 	</div>

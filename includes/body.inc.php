@@ -16,7 +16,7 @@ function print_header($title) {
   <link href="testing/css/touchtouch.css" rel="stylesheet" type="text/css" />
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js" ></script>
-  <script type="text/javascript" src="testing/js/touchtouch.js" ></script>
+  <script type="text/javascript" src="js/touchTouch.jquery.js" ></script>
 
   <script type="text/javascript">
     $(function() {
