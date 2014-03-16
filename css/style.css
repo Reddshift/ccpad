@@ -419,3 +419,6 @@ font-size: 14px;
 background-color: #EFEFEF;
 color: #0030A5;
 }
+
+.touch_gallery {}
+.touch_gallery img {margin: 5px;}
