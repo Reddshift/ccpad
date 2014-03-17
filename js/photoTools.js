@@ -4,6 +4,14 @@ photoTools.flickr = photoTools.flickr || {};
 photoTools.galleries = photoTools.galleries || {}; 
 photoTools.flickr.api_key = "e9c269dab327f845d9ab34045f9db905";
 
+photoTools.load_galleries = function(gallery_array) {
+  $.each(gallery_array, function(i, gallery){
+    photoTools.galleries[gallery[1]] = new Gallery(gallery[0], gallery[1]);
+    photoTools.galleries[gallery[1]].load_set();
+  });
+}
+
+
 //class for managing galleries
 var Gallery = function(photoset_id, gallery_id) {
   this.gallery_id = gallery_id;
@@ -15,30 +23,46 @@ var Gallery = function(photoset_id, gallery_id) {
 
 Gallery.prototype = {
   load_set : function() {
-    gallery_ref = this; //pretty sure there is a better way to do this....
+    var self = this;
     $.getJSON("http://api.flickr.com/services/rest/?",
       {method: "flickr.photosets.getPhotos", api_key: photoTools.flickr.api_key, photoset_id: this.photoset_id, format: "json", nojsoncallback : "1" }
-    ).done(function(json) {
-      gallery_ref.process_set(json);
-    }).fail(function(json) {alert("Failed to load Photo Set");});
+    ).done(function(set) {self.process_set(set);}
+    ).fail(function(json) {alert("Failed to load Photo Set");});
   },
 
+  /*
   process_set : function(set) {
     this.setLength = set.photoset.photo.length;
-    gallery_ref = this; //pretty sure there is a better way to do this....
     $.each(set.photoset.photo, function(i,photo){
       $.getJSON("http://api.flickr.com/services/rest/?",
         {method: "flickr.photos.getSizes", api_key: photoTools.flickr.api_key, photo_id: photo.id, format: "json", nojsoncallback : "1"  }
-      ).done(function(sizeobject) {
-        sizeHash = photoTools.getSizeHash(sizeobject.sizes.size);
-        gallery_ref.add_to_gallery(sizeHash.Thumbnail, sizeHash.Original, photo.id);
-      });
+      ).done(this.process_sizes
+      ).fail(function(json) {alert("Failed to load sizes for set");});
     });
+  },
+  */
+  process_set : function(set) {
+    var self = this;
+    this.setLength = set.photoset.photo.length;
+    $.each(set.photoset.photo, function(i, photo) {self.fetch_sizes(photo)});
+  },
+
+  fetch_sizes : function(flickr_photo) {      
+    var self = this;
+    $.getJSON("http://api.flickr.com/services/rest/?",
+      {method: "flickr.photos.getSizes", api_key: photoTools.flickr.api_key, photo_id: flickr_photo.id, format: "json", nojsoncallback : "1"  }
+    ).done(function(sizeobj) {self.process_sizes(sizeobj, flickr_photo.id);}
+    ).fail(function(json) {alert("Failed to load sizes for set");});
+  },
+
+  process_sizes : function(sizeobject, photo_id) {
+    sizeHash = photoTools.getSizeHash(sizeobject.sizes.size);
+    this.add_to_gallery(sizeHash.Thumbnail, sizeHash.Original, photo_id);
   },
 
   add_to_gallery : function(thumb, full, photo_id) {
-    link = $("<a/>").attr({href : full});
-    thumb = $("<img/>").attr({src : thumb}).appendTo('#' + this.gallery_id);
+    var link = $("<a/>").attr({href : full});
+    var thumb = $("<img/>").attr({src : thumb}).appendTo('#' + this.gallery_id);
     link.appendTo('#' + this.gallery_id);
     thumb.appendTo(link);
     this.log_rendered(photo_id);
@@ -48,10 +72,11 @@ Gallery.prototype = {
     this.rendered_count++;
     this.rendered_ids.push(photo_id); 
     if(this.rendered_count == this.setLength) {
-      $('#' + this.gallery_id + ' a').touchTouch();
+     // $('#' + this.gallery_id + ' a').touchTouch();
     }
   }
-}
+};
+
 
 photoTools.getSizeHash = function(available) {
   var sizes = {};
@@ -61,86 +86,3 @@ photoTools.getSizeHash = function(available) {
   return sizes;
 };
 
-/*
-photoTools.flickr.loadSet = function(photoset_id, gallery_id) {
-  $.getJSON("http://api.flickr.com/services/rest/?",
-    {method: "flickr.photosets.getPhotos", api_key: photoTools.flickr.api_key, photoset_id: photoset_id, format: "json", nojsoncallback : "1" }
-  ).done(function(json) {
-    photoTools.flickr.processSet(json, gallery_id);
-  }).fail(function(json) {alert("Failed to load Photo Set");});
-};
-
-
-photoTools.flickr.processSet = function(set, gallery_id) {
-  phototools.galleries[gallery_id] = {};//maybe I should prototype this or something
-  phototools.galleries[gallery_id].setlength = set.photoset.photo.length;
-  phototools.galleries[gallery_id].rendered = 0;
-  $.each(set.photoset.photo, function(i,photo){
-    if(setlength - 1 == i) photoTools.flickr.lastPhotoId = photo.id;
-    $.getJSON("http://api.flickr.com/services/rest/?",
-      {method: "flickr.photos.getSizes", api_key: photoTools.flickr.api_key, photo_id: photo.id, format: "json", nojsoncallback : "1"  }
-    ).done(function(sizeobject) {
-      sizeHash = photoTools.getSizeHash(sizeobject.sizes.size);
-      photoTools.add_to_gallery(sizeHash.Thumbnail, sizeHash.Original, gallery_id, photo.id);
-    });
-  });
-};
-
-photoTools.add_to_gallery = function(thumb, full, gallery_id, photo_id) {
-  link = $("<a/>").attr({href : full});
-  thumb = $("<img/>").attr({src : thumb}).appendTo('#' + gallery_id);
-  link.appendTo('#' + gallery_id);
-  thumb.appendTo(link);
-
-
-
-
-  if((photoTools.flickr.lastPhotoId != undefined) && (photoTools.flickr.lastPhotoId == photo_id)) {
-    alert("running!!!");
-    $('#' + gallery_id + ' a').touchTouch();
-  }
-};
-*/
-
-
-
-
-
-
-/*
-$.getJSON("http://api.flickr.com/services/rest/?",
-  {method: "flickr.photosets.getPhotos", api_key: "e9c269dab327f845d9ab34045f9db905", photoset_id: "72157641723925504", format: "json", nojsoncallback : "1" },
-  function(set_container) {
-    $.each(set_container.photoset.photo, function(i,photo){
-      $.getJSON("http://api.flickr.com/services/rest/?",
-        {method: "flickr.photos.getSizes", api_key: "e9c269dab327f845d9ab34045f9db905", photo_id: photo.id, format: "json", nojsoncallback : "1"  },
-        function(sizeobject) { 
-          sizeHash = getSizeHash(sizeobject.sizes.size);
-          link = $("<a/>").attr({href : sizeHash.Original});
-          thumb = $("<img/>").attr({src : sizeHash.Thumbnail}).appendTo("#commercial_gallery");
-          link.appendTo("#commercial_gallery");
-          thumb.appendTo(link);
-
-          //don't know if we should do this each time...might ensure that under a slow connection images are still viewable, but also might be slow...
-          if ((photoTools.setLength -1) == photoTools.setPosition) {
-          alert(photoTools.setLength + " --- " + photoTools.setPosition);
-            $('#commercial_gallery a').touchTouch();
-          }
-        }
-      );
-    });
-  }
-);
-//$(function() {
- // $('#commercial_gallery a').touchTouch();
-//});
-
-function getSizeHash(available) {
-  sizes = new Object();
-  $.each(available, function(i, size) {
-    sizes[size.label] = size.source;
-  });
-  return sizes;
-}
-
-*/
