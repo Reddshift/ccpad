@@ -11,6 +11,16 @@ photoTools.load_galleries = function(gallery_array) {
   });
 }
 
+photoTools.ready_galleries = function() {
+  var all_ready = true;
+  $.each(photoTools.galleries, function(i,gallery) {
+    if (!gallery.ready) all_ready = false; 
+  });
+  if (all_ready) {
+    $(function() { $('.touch_gallery a').touchTouch();});
+  }
+}
+
 
 //class for managing galleries
 var Gallery = function(photoset_id, gallery_id) {
@@ -19,6 +29,7 @@ var Gallery = function(photoset_id, gallery_id) {
   this.setLength = 0;
   this.rendered_count = 0
   this.rendered_ids = [];
+  this.ready = false;
 }
 
 Gallery.prototype = {
@@ -72,7 +83,8 @@ Gallery.prototype = {
     this.rendered_count++;
     this.rendered_ids.push(photo_id); 
     if(this.rendered_count == this.setLength) {
-     // $('#' + this.gallery_id + ' a').touchTouch();
+      this.ready = true;
+      photoTools.ready_galleries();
     }
   }
 };
