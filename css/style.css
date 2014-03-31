@@ -422,3 +422,44 @@ color: #0030A5;
 
 .touch_gallery {}
 .touch_gallery img {margin: 5px;}
+
+
+/* styles for regular width, but added for changes to support responsive */
+img#header_img_mobile {display: none;}
+
+
+
+/* Responsive Styles for Mobile */
+@media (max-width: 700px) {
+  div.basic_shadow { width: auto; background: none; }
+  div#header {width: auto;}
+  img#header_img_regular {display: none;}
+  img#header_img_mobile {display: block;}
+  #content { width: auto; padding: 15px; }
+  .page_content { width: auto; padding: 10px 10px 10px 10px; }
+
+  /*	footer
+  ---------------------------------------------*/
+  #footer {
+    width: auto;
+    background-color: #EEE;
+    background-image: none;
+    border-top: 1px solid #AAA;
+  }
+  
+  #copyright, #footer_links {
+    position: relative;
+    left: auto;
+    top: auto;
+    padding: 10px;
+  }
+
+  #footer_links {
+    text-align: left;
+    right: auto;
+  }
+
+
+
+
+}

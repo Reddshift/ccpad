@@ -27,7 +27,10 @@ function print_header($title) {
 <div class="basic_container" style="height: 150px;">	
 	<div class="basic_shadow">
 	  <div id="header">
-	    <div align="center"><img src="images/banner.jpg" width="798" height="150" border="0" /></div>
+      <div align="center">
+        <img src="images/banner.jpg" id="header_img_regular" width="798" height="150" border="0" />
+        <img src="images/banner.jpg" id="header_img_mobile" width="320" height="150" border="0" />
+      </div>
 	  </div>	
   </div>
 </div>
