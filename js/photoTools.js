@@ -36,39 +36,25 @@ Gallery.prototype = {
   load_set : function() {
     var self = this;
     $.getJSON("http://api.flickr.com/services/rest/?",
-      {method: "flickr.photosets.getPhotos", api_key: photoTools.flickr.api_key, photoset_id: this.photoset_id, format: "json", nojsoncallback : "1" }
+      {
+        method: "flickr.photosets.getPhotos", 
+        api_key: photoTools.flickr.api_key, 
+        photoset_id: this.photoset_id, 
+        format: "json", 
+        nojsoncallback : "1",
+        extras : "date_upload, url_t, url_o"
+      }
     ).done(function(set) {self.process_set(set);}
     ).fail(function(json) {alert("Failed to load Photo Set");});
   },
 
-  /*
   process_set : function(set) {
+    var self = this;
     this.setLength = set.photoset.photo.length;
-    $.each(set.photoset.photo, function(i,photo){
-      $.getJSON("http://api.flickr.com/services/rest/?",
-        {method: "flickr.photos.getSizes", api_key: photoTools.flickr.api_key, photo_id: photo.id, format: "json", nojsoncallback : "1"  }
-      ).done(this.process_sizes
-      ).fail(function(json) {alert("Failed to load sizes for set");});
+    var ordered = set.photoset.photo.sort( function(a,b) {
+      return parseInt(a.dateupload) - parseInt(b.dateupload);
     });
-  },
-  */
-  process_set : function(set) {
-    var self = this;
-    this.setLength = set.photoset.photo.length;
-    $.each(set.photoset.photo, function(i, photo) {self.fetch_sizes(photo)});
-  },
-
-  fetch_sizes : function(flickr_photo) {      
-    var self = this;
-    $.getJSON("http://api.flickr.com/services/rest/?",
-      {method: "flickr.photos.getSizes", api_key: photoTools.flickr.api_key, photo_id: flickr_photo.id, format: "json", nojsoncallback : "1"  }
-    ).done(function(sizeobj) {self.process_sizes(sizeobj, flickr_photo.id);}
-    ).fail(function(json) {alert("Failed to load sizes for set");});
-  },
-
-  process_sizes : function(sizeobject, photo_id) {
-    sizeHash = photoTools.getSizeHash(sizeobject.sizes.size);
-    this.add_to_gallery(sizeHash.Thumbnail, sizeHash.Original, photo_id);
+    $.each(ordered, function(i, photo) {self.add_to_gallery(photo.url_t, photo.url_o, photo.id)});
   },
 
   add_to_gallery : function(thumb, full, photo_id) {
@@ -87,6 +73,25 @@ Gallery.prototype = {
       photoTools.ready_galleries();
     }
   }
+  //*********************************************************
+  //These methods are no longer used for defualt functionality, but could prove useful for
+  //working with sizes in the future
+  //*********************************************************
+  /*
+  fetch_sizes : function(flickr_photo) {      
+    var self = this;
+    $.getJSON("http://api.flickr.com/services/rest/?",
+      {method: "flickr.photos.getSizes", api_key: photoTools.flickr.api_key, photo_id: flickr_photo.id, format: "json", nojsoncallback : "1"  }
+    ).done(function(sizeobj) {self.process_sizes(sizeobj, flickr_photo.id);}
+    ).fail(function(json) {alert("Failed to load sizes for set");});
+  },
+
+  process_sizes : function(sizeobject, photo_id) {
+    sizeHash = photoTools.getSizeHash(sizeobject.sizes.size);
+    this.add_to_gallery(sizeHash.Thumbnail, sizeHash.Original, photo_id);
+  },
+  */
+
 };
 
 
