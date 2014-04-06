@@ -424,15 +424,19 @@ color: #0030A5;
 .touch_gallery img {margin: 5px;}
 
 
-/* styles for regular width, but added for changes to support responsive */
+/* styles for regular width, but added for changes to support responsive 
+ * **************************************************************************/
 img#header_img_mobile {display: none;}
+div#mobilemenu {display: none;}
+ul#mobilemenu_items {display: none;}
 
 
 
-/* Responsive Styles for Mobile */
-@media (max-width: 700px) {
+/* Responsive Styles for Mobile 
+ * **************************************************************************/
+@media only screen and (max-width : 500px) {
   div.basic_shadow { width: auto; background: none; }
-  div#header {width: auto;}
+  div#header {width: auto; height: auto;}
   img#header_img_regular {display: none;}
   img#header_img_mobile {display: block;}
   #content { width: auto; padding: 15px; }
@@ -440,25 +444,33 @@ img#header_img_mobile {display: none;}
 
   /*	footer
   ---------------------------------------------*/
-  #footer {
-    width: auto;
-    background-color: #EEE;
-    background-image: none;
-    border-top: 1px solid #AAA;
-  }
-  
-  #copyright, #footer_links {
+  #footer { width: auto; background-color: #EEE; background-image: none; border-top: 1px solid #AAA; }
+  #copyright, #footer_links { position: relative; left: auto; top: auto; padding: 10px; }
+  #footer_links { text-align: left; right: auto; }
+
+  /*	nav
+  ---------------------------------------------*/
+  #mainmenu { display: none; }
+  div#mobilemenu {display: block; font-size: 1.75em; padding: 5px 10px 5px 10px; background-color: #142f7a; color: #FFF;}
+  div#mobilemenu a:link {color: #FFF;}
+  ul#mobilemenu_items {display: none; padding: 0 0 20px 30px; font-size: 1.75em; list-style-type: none; border-bottom: 1px solid #AAA;}
+  ul#mobilemenu_items li {margin: .3em 0 .3em 0;}
+
+  /* menu icon */
+  .border-menu {
     position: relative;
-    left: auto;
-    top: auto;
-    padding: 10px;
+    padding-left: 1.25em;
   }
-
-  #footer_links {
-    text-align: left;
-    right: auto;
+  .border-menu:before {
+    content: "";
+    position: absolute;
+    top: 0.25em;
+    left: 0;
+    width: 1em;
+    height: 0.15em;
+    border-top: 0.45em double #FFF;
+    border-bottom: 0.15em solid #FFF;
   }
-
 
 
 
